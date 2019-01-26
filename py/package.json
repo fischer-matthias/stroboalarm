@@ -4,7 +4,7 @@
   "description": "433mhz freq sender and receiver",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "./bin/make"
   },
   "author": "Matthias Fischer",
   "license": "MIT",
