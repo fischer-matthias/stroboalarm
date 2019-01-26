@@ -16,7 +16,6 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "rpi-gpio": "^2.1.2",
-    "sleep": "^5.2.4"
+    "rpi-gpio": "^2.1.2"
   }
 }
