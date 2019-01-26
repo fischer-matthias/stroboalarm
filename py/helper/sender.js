@@ -1,6 +1,7 @@
 module.exports = () => {
     
-    exec = require('child_process').exec;
+    var exec = require('child_process').exec;
+    var pySender = {};
 
     pySender.sendValue = (value) => {
         exec('../bin/send ' + val, (error, stdout, stderr) => { 
