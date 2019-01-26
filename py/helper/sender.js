@@ -1,10 +1,22 @@
 const { spawn } = require('child_process');
+const bParser = require('./brennenstuhl-parser')();
 
 module.exports = function() {
     
+    const STATE_ON = '1';
+    const STATE_OFF = '0';
+
     var sender = {};
 
-    sender.sendValue = (value) => {
+    sender.on = (systemCode, unitCode) => {
+      send(bParser.parse(systemCode, unitCode, STATE_ON));
+    }
+
+    sender.off = (systemCode, unitCode) => {
+      send(bParser.parse(systemCode, unitCode, STATE_OFF));
+    }
+
+    send = (value) => {
         const ls = spawn('./bin/send', [value]);
 
         ls.stdout.on('data', (data) => {
