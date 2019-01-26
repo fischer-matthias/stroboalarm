@@ -1,5 +1,7 @@
 # py ignores
 **/*.o
+**/sniffer
+**/.input
 
 
 # common
