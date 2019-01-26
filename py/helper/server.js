@@ -16,8 +16,8 @@ module.exports = function() {
         setUpRoutes();
         server.app.use('/api', server.router);
 
-        server.app.listen(port);
-        console.log('Server listens on port ' + port + '.');
+        server.app.listen(server.port);
+        console.log('Server listens on port ' + server.port + '.');
     }
 
     setUpRoutes = () => {
