@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     if (argc >= 4) pulseLength = atoi(argv[3]);
     
     if (wiringPiSetup () == -1) return 1;
-    printf("sending code[%i]\n", code);
+    printf("{\"code\":\"%i\"}", code);
     RCSwitch mySwitch = RCSwitch();
     if (protocol != 0) mySwitch.setProtocol(protocol);
     if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);

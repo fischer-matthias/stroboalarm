@@ -1,22 +1,19 @@
-var exec = require('child_process').exec;
+var sender = require('./helper/sender')();
 
 var ON = '5506385';
 var OFF = '5506388';
 
-var status = false;
+var status = OFF;
 
-function sendValue(val) {
-    exec('./bin/send ' + val, (error, stdout, stderr) => { console.log(stdout);});
+while(1) {
+
+    if (status === ON) {
+        status = OFF;
+    } else {
+        status = ON;
+    }
+
+    setTimeout(() => {
+        sender.send(status);
+    }, 1000);
 }
-
-sendValue(ON);
-
-// while(true) {
-
-//     setTimeout(() => {
-//         status = !status;
-//         sendValue((status ? ON : OFF));
-//     }, 1000);
-
-// }
-
