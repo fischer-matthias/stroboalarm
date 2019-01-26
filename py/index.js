@@ -15,7 +15,7 @@ while(1) {
     }
 
     while(true) {
-        sender.send(status);
+        sender.sendValue(status);
         sleep.sleep(1);
     }
 }
