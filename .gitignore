@@ -1,2 +1,6 @@
 # py ignores
 **/*.o
+
+
+# common
+**/node_modules
