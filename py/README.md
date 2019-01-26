@@ -4,11 +4,15 @@
 - [WiringPi](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/)
 
 ## install
-`py/bin/`:
 ```
-make all
+npm install
+npm run build
 ```
-`py/`:
+
+## start server
 ```
-npm i
+npm start
 ```
+
+## Credits:
+## <b>cpp code https://github.com/ninjablocks/433Utils</b>
