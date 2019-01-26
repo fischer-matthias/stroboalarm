@@ -2,8 +2,7 @@ module.exports = () => {
     const bParser = {};
 
     bParser.parse = (systemCode, unitCode, state) => {
-        const bin = systemCode + unitCode + state + inverse(state);
-        return toDecimal(bin);
+        return toDecimal(('' + systemCode) + ('' + unitCode) + ('' + state) + inverse(('' + state)));
     };
 
     toDecimal = (binary) => {
