@@ -6,8 +6,7 @@
 #include <fstream>
 
 using namespace std;
-     
-     
+
 RCSwitch mySwitch;
  
 int main(int argc, char *argv[]) {
@@ -29,7 +28,6 @@ int main(int argc, char *argv[]) {
      if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);
      mySwitch.enableReceive(PIN);  // Receiver on interrupt 0 => that is pin #2
      
-    
      while(1) {
   
       if (mySwitch.available()) {
@@ -38,25 +36,24 @@ int main(int argc, char *argv[]) {
     
         if (value == 0) {
           printf("Unknown encoding\n");
-        } else {    
-   
+
+        } else {
           int val = mySwitch.getReceivedValue();
           printf("Received %i\n", val );
-	  ofstream file;
-          file.open("433.input");
+
+	        ofstream file;
+          file.open(".input");
           file << val;
           file.close();
-}
+        }
     
         fflush(stdout);
         mySwitch.resetAvailable();
       }
+
       usleep(100); 
-  
   }
 
   exit(0);
-
-
 }
 
