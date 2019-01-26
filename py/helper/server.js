@@ -21,7 +21,7 @@ module.exports = function() {
     }
 
     setUpRoutes = () => {
-        server.router.get(':systemCode/:unitCode/on', (req, res) => {
+        server.router.get('/:systemCode/:unitCode/on', (req, res) => {
 
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
@@ -32,7 +32,7 @@ module.exports = function() {
             res.json({ status: 200 });
         });
 
-        server.router.get(':systemCode/:unitCode/off', (req, res) => {
+        server.router.get('/:systemCode/:unitCode/off', (req, res) => {
 
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
