@@ -4,7 +4,7 @@
   "description": "433mhz freq sender and receiver",
   "main": "index.js",
   "scripts": {
-    "prepare": "./bin/make"
+    "start": "node index.js"
   },
   "author": "Matthias Fischer",
   "license": "MIT",
