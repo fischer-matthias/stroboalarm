@@ -1,6 +1,8 @@
 # py ignores
 **/*.o
 **/sniffer
+**/send
+**/set
 **/.input
 
 

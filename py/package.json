@@ -9,6 +9,7 @@
   "author": "Matthias Fischer",
   "license": "MIT",
   "dependencies": {
-    "rpi-gpio": "^2.1.2"
+    "rpi-gpio": "^2.1.2",
+    "sleep": "^5.2.4"
   }
 }
