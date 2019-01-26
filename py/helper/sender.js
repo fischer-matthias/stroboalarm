@@ -4,7 +4,7 @@ module.exports = () => {
     var pySender = {};
 
     pySender.sendValue = (value) => {
-        exec('../bin/send ' + value, (error, stdout, stderr) => { 
+        exec('./../bin/send ' + value, (error, stdout, stderr) => { 
         
             if (error) {
                 console.error(error);

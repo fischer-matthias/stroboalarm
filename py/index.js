@@ -1,21 +1,36 @@
-var sender = require('./helper/sender')();
-var sleep = require('sleep');
+const { spawn } = require('child_process');
+const ls = spawn('send', ['5506388']);
 
-var ON = '5506385';
-var OFF = '5506388';
+ls.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
 
-var status = OFF;
+ls.stderr.on('data', (data) => {
+  console.log(`stderr: ${data}`);
+});
 
-while(1) {
+ls.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
 
-    if (status === ON) {
-        status = OFF;
-    } else {
-        status = ON;
-    }
+// var sender = require('./helper/sender')();
+// var sleep = require('sleep');
 
-    while(true) {
-        sender.sendValue(status);
-        sleep.sleep(1);
-    }
-}
+// var ON = '5506385';
+// var OFF = '5506388';
+
+// var status = OFF;
+
+// while(1) {
+
+//     if (status === ON) {
+//         status = OFF;
+//     } else {
+//         status = ON;
+//     }
+
+//     while(true) {
+//         sender.sendValue(status);
+//         sleep.sleep(1);
+//     }
+// }
