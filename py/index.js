@@ -1,4 +1,5 @@
 var sender = require('./helper/sender')();
+var sleep = require('sleep');
 
 var ON = '5506385';
 var OFF = '5506388';
@@ -13,7 +14,8 @@ while(1) {
         status = ON;
     }
 
-    setTimeout(() => {
+    while(true) {
         sender.send(status);
-    }, 1000);
+        sleep.sleep(1);
+    }
 }
