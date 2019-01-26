@@ -5,7 +5,7 @@ module.exports = function() {
     var sender = {};
 
     sender.sendValue = (value) => {
-        const ls = spawn('./send', [value]);
+        const ls = spawn('./bin/send', [value]);
 
         ls.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
