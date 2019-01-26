@@ -26,6 +26,7 @@ module.exports = function() {
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
 
+            console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
             sender.on(systemCode, unitCode);
 
             res.status = 200;
@@ -37,6 +38,7 @@ module.exports = function() {
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
 
+            console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
             sender.off(systemCode, unitCode);
             
             res.status = 200;
