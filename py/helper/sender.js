@@ -1,20 +1,24 @@
-module.exports = () => {
-    
-    var exec = require('child_process').exec;
-    var pySender = {};
+const { spawn } = require('child_process');
 
-    pySender.sendValue = (value) => {
-        exec('./../bin/send ' + value, (error, stdout, stderr) => { 
-        
-            if (error) {
-                console.error(error);
-            }
+module.exports = function() {
     
-            if (stdout) {
-                console.log('Send')
-            }
+    var sender = {};
+
+    sender.sendValue = (value) => {
+        const ls = spawn('./send', [value]);
+
+        ls.stdout.on('data', (data) => {
+          console.log(`stdout: ${data}`);
+        });
+        
+        ls.stderr.on('data', (data) => {
+          console.log(`stderr: ${data}`);
+        });
+        
+        ls.on('close', (code) => {
+          console.log(`child process exited with code ${code}`);
         });
     };
 
-    return pySender;
+    return sender;
 }
