@@ -9,12 +9,14 @@ function sendValue(val) {
     exec('./bin/send ' + val, (error, stdout, stderr) => { console.log(stdout);});
 }
 
-while(true) {
+sendValue(ON);
 
-    setTimeout(() => {
-        status = !status;
-        sendValue((status ? ON : OFF));
-    }, 1000);
+// while(true) {
 
-}
+//     setTimeout(() => {
+//         status = !status;
+//         sendValue((status ? ON : OFF));
+//     }, 1000);
+
+// }
 
