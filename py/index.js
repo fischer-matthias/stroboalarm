@@ -14,11 +14,7 @@ while(true) {
     setTimeout(() => {
         status = !status;
         sendValue((status ? ON : OFF));
-        sendValue((status ? ON : OFF));
-        sendValue((status ? ON : OFF));
-        sendValue((status ? ON : OFF));
-        sendValue((status ? ON : OFF));
-    }, 2000);
+    }, 1000);
 
 }
 
