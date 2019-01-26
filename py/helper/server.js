@@ -4,19 +4,19 @@ const sender = require('./sender')();
 
 module.exports = function() {
     const server = {};
-    const app = express();
 
     server.init = () => {
-        app.use(bodyParser.urlencoded({ extended: true }));
-        app.use(bodyParser.json());
+        server.app = express();
+        server.app.use(bodyParser.urlencoded({ extended: true }));
+        server.app.use(bodyParser.json());
 
         server.port = process.env.PORT || 8080;
         server.router = express.Router();
 
         setUpRoutes();
-        app.use('/api', server.router);
+        server.app.use('/api', server.router);
 
-        app.listen(port);
+        server.app.listen(port);
         console.log('Server listens on port ' + port + '.');
     }
 
