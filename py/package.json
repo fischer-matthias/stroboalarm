@@ -4,7 +4,12 @@
   "description": "433mhz freq sender and receiver",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "clean && compile",
+    "compile": "compile:cpp",
+    "compile:cpp": "make -C ./bin all",
+    "clean": "clean:cpp",
+    "clean:cpp": "make -C ./bin clean"
   },
   "author": "Matthias Fischer",
   "license": "MIT",
