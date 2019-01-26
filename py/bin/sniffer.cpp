@@ -42,8 +42,8 @@ int main(int argc, char *argv[]) {
           printf("Received %i\n", val );
 
 	        ofstream file;
-          file.open(".input");
-          file << val;
+          file.open(".input", ios_base::app);
+          file << val << '\n';
           file.close();
         }
     
