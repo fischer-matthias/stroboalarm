@@ -22,28 +22,45 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-
-            const systemCode = req.params.systemCode;
-            const unitCode = req.params.unitCode;
-
-            console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
-            sender.on(systemCode, unitCode);
-
-            res.status = 200;
-            res.json({ status: 200 });
+            send(res, req.params.systemCode, req.params.unitCode, true);
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
+            send(res, req.params.systemCode, req.params.unitCode, false);
+        });
+    }
 
-            const systemCode = req.params.systemCode;
-            const unitCode = req.params.unitCode;
-
+    send = (res, systemCode, unitCode, on) => {
+        if (validateParameters(res, systemCode, unitCode)) {
             console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
-            sender.off(systemCode, unitCode);
+
+            if (on) {
+                sender.on(systemCode, unitCode);
+            } else {
+                sender.off(systemCode, unitCode);
+            }
             
             res.status = 200;
             res.json({ status: 200 });
-        });
+        }
+    }
+
+    validateParameters = (res, systemCode, unitCode) => {
+        if (systemCode.length !== 5) {
+
+            res.status = 412;
+            res.json({ error: 'wrong systemCode length => should be five!'});
+            return false;
+
+        } else if (unitCode !== 'A' && unitCode !== 'B' && unitCode !== 'C' && unitCode !== 'D') {
+
+            res.status = 412;
+            res.json({ error: 'wrong unitCode => should be one of them [A,B,C,D]!'});
+            return false;
+
+        } else {
+            return true;
+        }
     }
 
     return server;
