@@ -48,7 +48,7 @@ module.exports = function() {
             }
         }
 
-        return validationResult.status;
+        return validationResult;
     }
 
     validateParameters = (systemCode, unitCode) => {
