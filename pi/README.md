@@ -1,4 +1,4 @@
-# py server application
+# pi server application
 
 ## requirements
 - [WiringPi](https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/)
