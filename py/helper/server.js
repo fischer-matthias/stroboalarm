@@ -22,7 +22,7 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/system/:systemCode/unit/:unitCode/on', (req, res) => {
-            let result = send(req.params['systemCode'], req.params['unitCode'], true);
+            let result = send433(req.params['systemCode'], req.params['unitCode'], true);
             res.status = result.status;
             res.json(result);
         });
