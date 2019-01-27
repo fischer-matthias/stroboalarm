@@ -26,12 +26,15 @@ module.exports = function() {
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-                send(res, req.params.systemCode, req.params.unitCode, false);
+            send(res, req.params.systemCode, req.params.unitCode, false);
         });
     }
 
     send = (res, systemCode, unitCode, on) => {
-        if (validateParameters(res, systemCode, unitCode)) {
+
+        let validationResult = validateParameters(systemCode, unitCode);
+
+        if (!validationResult.error) {
             console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
 
             if (on) {
@@ -42,24 +45,19 @@ module.exports = function() {
             
             res.status = 200;
             res.json({ status: 200 });
+        } else {
+            res.status = validationResult.status;
+            res.json(validationResult)
         }
     }
 
-    validateParameters = (res, systemCode, unitCode) => {
+    validateParameters = (systemCode, unitCode) => {
         if (systemCode == undefined || systemCode == null || systemCode.length !== 5) {
-
-            res.status = 412;
-            res.json({ error: 'wrong systemCode length => should be five!'});
-            return false;
-
+            return { error: 'wrong systemCode length => should be five!', status: 412 };
         } else if (unitCode !== 'A' && unitCode !== 'B' && unitCode !== 'C' && unitCode !== 'D') {
-
-            res.status = 412;
-            res.json({ error: 'wrong unitCode => should be one of them [A,B,C,D]!'});
-            return false;
-
+            return { error: 'wrong unitCode => should be one of them [A,B,C,D]!', status: 412 };
         } else {
-            return true;
+            return { status: 200 };
         }
     }
 
