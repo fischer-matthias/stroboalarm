@@ -28,13 +28,13 @@ module.exports = function() {
         });
 
         server.router.get('/system/:systemCode/unit/:unitCode/off', (req, res) => {
-            let result = send(req.params['systemCode'], req.params['unitCode'], false);
+            let result = send433(req.params['systemCode'], req.params['unitCode'], false);
             res.status = result.status;
             res.json(result);
         });
     }
 
-    send = (systemCode, unitCode, on) => {
+    send433 = (systemCode, unitCode, on) => {
 
         console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
         let validationResult = validateParameters(systemCode, unitCode);
