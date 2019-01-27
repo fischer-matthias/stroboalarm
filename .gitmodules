@@ -4,3 +4,6 @@
 [submodule "pi/helper/rc-switch"]
 	path = pi/helper/rc-switch
 	url = https://github.com/sui77/rc-switch
+[submodule "pi/cpp/rc-switch"]
+	path = pi/cpp/rc-switch
+	url = https://github.com/sui77/rc-switch
