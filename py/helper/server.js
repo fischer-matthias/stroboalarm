@@ -22,11 +22,16 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-            send(res, req.params.systemCode, req.params.unitCode, true);
+            const systemCode = req.params.systemCode;
+            const unitCode = req.params.unitCode;
+            send(res, systemCode, unitCode, true);
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-            send(res, req.params.systemCode, req.params.unitCode, false);
+
+            const systemCode = req.params.systemCode;
+            const unitCode = req.params.unitCode;
+            send(res, systemCode, unitCode, false);
         });
     }
 
