@@ -23,10 +23,14 @@ module.exports = () => {
 
         let preparedSystemCode = '';
         for (var i = 0; i < systemCode.length; i++) {
-            preparedSystemCode +=  systemCode.charAt(i) + '0';
+            preparedSystemCode +=  inverseChar(systemCode.charAt(i)) + '0';
         }
 
         return preparedSystemCode;
+    }
+
+    inverseChar = (char) => {
+        return char === '0' ? '1' : '0';
     }
 
     toDecimal = (binary) => {
