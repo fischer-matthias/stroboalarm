@@ -21,14 +21,14 @@ module.exports = function() {
     }
 
     setUpRoutes = () => {
-        server.router.get('/system/:system/unit/:unit/on', (req, res) => {
-            let result = send(res, req.params.system, req.params.unit, true);
+        server.router.get('/system/:systemCode/unit/:unitCode/on', (req, res) => {
+            let result = send(res, req.params.systemCode, req.params.unitCode, true);
             res.status = result.status;
             res.json(result);
         });
 
-        server.router.get('/system/:system/unit/:unit/off', (req, res) => {
-            let result = send(res, req.params.system, req.params.unit, false);
+        server.router.get('/system/:systemCode/unit/:unitCode/off', (req, res) => {
+            let result = send(res, req.params.systemCode, req.params.unitCode, false);
             res.status = result.status;
             res.json(result);
         });
