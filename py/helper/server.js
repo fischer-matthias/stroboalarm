@@ -22,19 +22,19 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-            const systemCode = req.params.systemCode + '';
-            const unitCode = req.params.unitCode + '';
+            const systemCode = req.params.systemCode;
+            const unitCode = req.params.unitCode;
             
-            if (!isNullOrUndefined(systemCode) && !isNullOrUndefined(unitCode)) {
+            if (systemCode != null && systemCode != undefined && unitCode != null && systemCode != undefined) {
                 send(res, systemCode, unitCode, true);
             }
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-            const systemCode = req.params.systemCode + '';
-            const unitCode = req.params.unitCode + '';
+            const systemCode = req.params.systemCode;
+            const unitCode = req.params.unitCode;
             
-            if (!isNullOrUndefined(systemCode) && !isNullOrUndefined(unitCode)) {
+            if (systemCode != null && systemCode != undefined && unitCode != null && systemCode != undefined) {
                 send(res, systemCode, unitCode, false);
             }
         });
