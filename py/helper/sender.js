@@ -3,8 +3,8 @@ const bParser = require('./brennenstuhl-parser')();
 
 module.exports = function() {
     
-    const STATE_ON = '1';
-    const STATE_OFF = '0';
+    const STATE_ON = 'ON';
+    const STATE_OFF = 'OFF';
 
     var sender = {};
 
