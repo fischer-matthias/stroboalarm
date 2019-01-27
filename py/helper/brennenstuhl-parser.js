@@ -14,10 +14,20 @@ module.exports = () => {
     }
 
     bParser.parse = (systemCode, unitCode, state) => {
-        const bin = ('' + systemCode) + '0' + ('' + UNIT_CODES[unitCode]) + ('' + STATE_CODES[state]);
+        const bin = ('' + prepareSystemCode(systemCode)) + ('' + UNIT_CODES[unitCode]) + ('' + STATE_CODES[state]);
         console.log('Binary: ' + bin);
         return toDecimal(bin);
     };
+
+    prepareSystemCode = (systemCode) => {
+
+        let preparedSystemCode = '';
+        for (var i = 0; i < systemCode.length; i++) {
+            preparedSystemCode +=  systemCode.charAt(i) + '0';
+        }
+
+        return preparedSystemCode;
+    }
 
     toDecimal = (binary) => {
         return parseInt(binary, 2);
