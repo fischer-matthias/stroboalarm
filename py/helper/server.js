@@ -25,7 +25,7 @@ module.exports = function() {
             const systemCode = req.params.systemCode + '';
             const unitCode = req.params.unitCode + '';
             
-            if (systemCode && unitCode) {
+            if (!isNullOrUndefined(systemCode) && !isNullOrUndefined(unitCode)) {
                 send(res, systemCode, unitCode, true);
             }
         });
@@ -34,7 +34,7 @@ module.exports = function() {
             const systemCode = req.params.systemCode + '';
             const unitCode = req.params.unitCode + '';
             
-            if (systemCode && unitCode) {
+            if (!isNullOrUndefined(systemCode) && !isNullOrUndefined(unitCode)) {
                 send(res, systemCode, unitCode, false);
             }
         });
