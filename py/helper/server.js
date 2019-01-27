@@ -56,6 +56,7 @@ module.exports = function() {
     }
 
     validateParameters = (res, systemCode, unitCode) => {
+        console.log(systemCode);
         if (systemCode.length !== 5) {
 
             res.status = 412;
