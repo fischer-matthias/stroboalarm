@@ -1,5 +1,5 @@
 [submodule "pi-brennenstuhl-server-app/cpp/rc-switch"]
-	path = pi/cpp/rc-switch
+	path = pi-brennenstuhl-server-app/cpp/rc-switch
 	url = https://github.com/sui77/rc-switch
 [submodule "pi-brennenstuhl-server-app"]
 	path = pi-brennenstuhl-server-app
