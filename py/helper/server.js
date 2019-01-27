@@ -22,15 +22,19 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-            send(res, req.params.systemCode, req.params.unitCode, true);
+            let result = send(res, req.params.systemCode, req.params.unitCode, true);
+            res.status = result.status;
+            res.json(result);
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-            send(res, req.params.systemCode, req.params.unitCode, false);
+            let result = send(res, req.params.systemCode, req.params.unitCode, false);
+            res.status = result.status;
+            res.json(result);
         });
     }
 
-    send = (res, systemCode, unitCode, on) => {
+    send = (systemCode, unitCode, on) => {
 
         let validationResult = validateParameters(systemCode, unitCode);
 
@@ -42,13 +46,9 @@ module.exports = function() {
             } else {
                 sender.off(systemCode, unitCode);
             }
-            
-            res.status = 200;
-            res.json({ status: 200 });
-        } else {
-            res.status = validationResult.status;
-            res.json(validationResult)
         }
+
+        return validationResult.status;
     }
 
     validateParameters = (systemCode, unitCode) => {
