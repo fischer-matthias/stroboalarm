@@ -24,14 +24,20 @@ module.exports = function() {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
-            send(res, systemCode, unitCode, true);
+            
+            if (systemCode && unitCode) {
+                send(res, systemCode, unitCode, true);
+            }
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
 
             const systemCode = req.params.systemCode;
             const unitCode = req.params.unitCode;
-            send(res, systemCode, unitCode, false);
+            
+            if (systemCode && unitCode) {
+                send(res, systemCode, unitCode, false);
+            }
         });
     }
 
@@ -51,21 +57,21 @@ module.exports = function() {
     }
 
     validateParameters = (res, systemCode, unitCode) => {
-        // if (systemCode.length !== 5) {
+        if (systemCode.length !== 5) {
 
-        //     res.status = 412;
-        //     res.json({ error: 'wrong systemCode length => should be five!'});
-        //     return false;
+            res.status = 412;
+            res.json({ error: 'wrong systemCode length => should be five!'});
+            return false;
 
-        // } else if (unitCode !== 'A' && unitCode !== 'B' && unitCode !== 'C' && unitCode !== 'D') {
+        } else if (unitCode !== 'A' && unitCode !== 'B' && unitCode !== 'C' && unitCode !== 'D') {
 
-        //     res.status = 412;
-        //     res.json({ error: 'wrong unitCode => should be one of them [A,B,C,D]!'});
-        //     return false;
+            res.status = 412;
+            res.json({ error: 'wrong unitCode => should be one of them [A,B,C,D]!'});
+            return false;
 
-        // } else {
-        //     return true;
-        // }
+        } else {
+            return true;
+        }
 
         return true;
     }
