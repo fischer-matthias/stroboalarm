@@ -21,14 +21,14 @@ module.exports = function() {
     }
 
     setUpRoutes = () => {
-        server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-            let result = send(res, req.params.systemCode, req.params.unitCode, true);
+        server.router.get('/sytem/:system/unit/:unit/on', (req, res) => {
+            let result = send(res, req.params.system, req.params.unit, true);
             res.status = result.status;
             res.json(result);
         });
 
-        server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-            let result = send(res, req.params.systemCode, req.params.unitCode, false);
+        server.router.get('/sytem/:system/unit/:unit/off', (req, res) => {
+            let result = send(res, req.params.system, req.params.unit, false);
             res.status = result.status;
             res.json(result);
         });
@@ -36,10 +36,10 @@ module.exports = function() {
 
     send = (systemCode, unitCode, on) => {
 
+        console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
         let validationResult = validateParameters(systemCode, unitCode);
 
         if (!validationResult.error) {
-            console.log('Systemcode: ' + systemCode + ' UnitCode: ' + unitCode);
 
             if (on) {
                 sender.on(systemCode, unitCode);
