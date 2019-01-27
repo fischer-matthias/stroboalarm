@@ -1,2 +1,2 @@
-const server = require('./helper/server')();
+const server = require('./js/server')();
 server.init();

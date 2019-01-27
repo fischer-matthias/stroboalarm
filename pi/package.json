@@ -7,9 +7,9 @@
     "start": "node index.js",
     "build": "npm run clean && npm run compile",
     "compile": "npm run compile:cpp",
-    "compile:cpp": "make -C ./bin all",
+    "compile:cpp": "make -C ./cpp all",
     "clean": "npm run clean:cpp",
-    "clean:cpp": "make -C ./bin clean"
+    "clean:cpp": "make -C ./cpp clean"
   },
   "author": "Matthias Fischer",
   "license": "MIT",

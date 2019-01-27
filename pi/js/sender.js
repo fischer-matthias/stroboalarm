@@ -17,7 +17,7 @@ module.exports = function() {
     }
 
     send = (value) => {
-        const ls = spawn('./bin/send', [value]);
+        const ls = spawn('./cpp/send', [value]);
 
         ls.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
