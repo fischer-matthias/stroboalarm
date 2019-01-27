@@ -22,21 +22,11 @@ module.exports = function() {
 
     setUpRoutes = () => {
         server.router.get('/:systemCode/:unitCode/on', (req, res) => {
-            const systemCode = req.params.systemCode;
-            const unitCode = req.params.unitCode;
-            
-            if (systemCode != null && systemCode != undefined && unitCode != null && systemCode != undefined) {
-                send(res, systemCode, unitCode, true);
-            }
+            send(res, req.params.systemCode, req.params.unitCode, true);
         });
 
         server.router.get('/:systemCode/:unitCode/off', (req, res) => {
-            const systemCode = req.params.systemCode;
-            const unitCode = req.params.unitCode;
-            
-            if (systemCode != null && systemCode != undefined && unitCode != null && systemCode != undefined) {
-                send(res, systemCode, unitCode, false);
-            }
+                send(res, req.params.systemCode, req.params.unitCode, false);
         });
     }
 
@@ -56,8 +46,7 @@ module.exports = function() {
     }
 
     validateParameters = (res, systemCode, unitCode) => {
-        console.log(systemCode);
-        if (systemCode.length !== 5) {
+        if (systemCode == undefined || systemCode == null || systemCode.length !== 5) {
 
             res.status = 412;
             res.json({ error: 'wrong systemCode length => should be five!'});
@@ -72,8 +61,6 @@ module.exports = function() {
         } else {
             return true;
         }
-
-        return true;
     }
 
     return server;
